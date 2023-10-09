@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de IMC</title>
+    <link rel="stylesheet" href="../static/css/imc.css">
+</head>
+<body>
+    <div class="cebeçalho">
+        <h1>Calculadora de IMC</h1>
+       
+    </div>
+    
+
+    <div class="conteudo">
+        <form method="POST">
+            <label for="altura" class="lab">Altura(m): (Ex: 1.6)</label>
+            <input type="number" class="inp" step="0.01" id="altura" name="altura" required>
+            <br><br>
+            <label for="peso" class="lab">Peso(kg): (Ex: 70)</label>
+            <input type="number" class="inp" step="0.01" id="peso" name="peso" required>
+            <br><br>
+            <label for="genero" class="lab">Sexo:</label>
+            <input type="radio" id="genero-masculino" name="genero" value="masculino" required>
+            <label for="genero-masculino" class="lab">Masculino</label>
+            <input type="radio" id="genero-feminino" name="genero" value="feminino" required>
+            <label for="genero-feminino" class="lab">Feminino</label>
+            <br><br>
+            <input type="submit" class="calcular" value="Calcular IMC">
+        </form>
+        {% if imc is not none %}
+        <h2>Resultados:</h2>
+        <div class="tabela">
+            <table border="1">
+                <tr>
+                    <th>IMC</th>
+                    <th>Nível de Obesidade</th>
+                    <th>Dieta Indicada</th>
+                </tr>
+                <tr>
+                    <td>{{ imc|round(2) }}</td>
+                    <td>{{ nivel_obesidade }}</td>
+                    <td>{{dieta|safe}}</td>
+                </tr>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+<footer class="rodape">
+    <h3>Created by Débora Macedo</h3>
+</footer>
+</body>
+
+</html>
